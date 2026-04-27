@@ -1,0 +1,82 @@
+﻿<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Détails de la Plainte - Plainte Citoyenne</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <header>
+        <div class="header-content">
+            <div class="logo">📋 Plainte Citoyenne</div>
+            <nav>
+                <a href="home.html">Accueil</a>
+                <a href="complaints.html">Mes plaintes</a>
+                <a href="profile.html">Profil</a>
+            </nav>
+            <div class="user-menu">
+                <span class="text-muted">Menu</span>
+                <a href="logout">Déconnexion</a>
+            </div>
+        </div>
+    </header>
+
+    <main class="container full-height">
+        <div class="content-wrapper" style="max-width: 800px;">
+            <div class="card">
+                <div style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 24px;">
+                    <div>
+                        <h1>📋 Plainte #001</h1>
+                        <p class="subtitle">Problème de signalisation routière</p>
+                    </div>
+                    <span class="badge success">En cours</span>
+                </div>
+
+                <div class="grid two-cols">
+                    <div>
+                        <h3>Informations Générales</h3>
+                        <p><strong>ID :</strong> #001</p>
+                        <p><strong>Date de création :</strong> 20 Avril 2026</p>
+                        <p><strong>Dernière mise à jour :</strong> 24 Avril 2026</p>
+                        <p><strong>Catégorie :</strong> Infrastructure</p>
+                        <p><strong>Priorité :</strong> Normale</p>
+                    </div>
+                    <div>
+                        <h3>Localisation</h3>
+                        <p><strong>Lieu :</strong> Avenue des Champs-Élysées, Paris 8ème</p>
+                        <p><strong>Coordonnées :</strong> 48.8699, 2.3076</p>
+                    </div>
+                </div>
+
+                <div style="padding-top: 24px; border-top: 1px solid var(--border); margin: 24px 0;">
+                    <h2>Description</h2>
+                    <p>La signalisation routière sur l'Avenue des Champs-Élysées est dégradée. Les panneaux indicateurs ne sont pas lisibles et présentent un risque de sécurité pour les usagers. Je demande une intervention rapide pour remplacer ou rénover ces panneaux.</p>
+                </div>
+
+                <div style="padding-top: 24px; border-top: 1px solid var(--border); margin: 24px 0;">
+                    <h2>Suivi de la Plainte</h2>
+                    <div style="margin: 20px 0;">
+                        <p><strong>20 Avril 2026</strong> - Plainte reçue et enregistrée (Par: Système)</p>
+                        <p><strong>22 Avril 2026</strong> - Plainte transférée au service compétent (Par: Admin)</p>
+                        <p><strong>24 Avril 2026</strong> - Intervention prévue dans les 5 jours (Par: Service Infrastructure)</p>
+                    </div>
+                </div>
+
+                <div style="padding-top: 24px; border-top: 1px solid var(--border); margin: 24px 0;">
+                    <h2>Documents Attachés</h2>
+                    <div style="margin: 16px 0;">
+                        <p>📄 <a href="#">photo-1.jpg</a> (1.2 MB)</p>
+                        <p>📄 <a href="#">photo-2.jpg</a> (980 KB)</p>
+                    </div>
+                </div>
+
+                <div class="actions horizontal mt-4">
+                    <a href="complaints.html" class="btn secondary">Retour</a>
+                    <a href="complaint-form.html" class="btn">Soumettre une autre plainte</a>
+                </div>
+            </div>
+        </div>
+    </main>
+</body>
+</html>

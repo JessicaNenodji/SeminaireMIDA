@@ -1,7 +1,8 @@
 package com.seminaire.auth;
 
-public class User {
-    private int id;
+import com.seminaire.model.AbstractUtilisateur;
+
+public class User extends AbstractUtilisateur {
     private String username;
     private String email;
     private String password;
@@ -15,14 +16,6 @@ public class User {
         this.email = email;
         this.password = password;
         this.role = role;
-    }
-
-    public int getId() {
-        return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
     }
 
     public String getUsername() {

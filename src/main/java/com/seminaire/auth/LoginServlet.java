@@ -42,17 +42,18 @@ public class LoginServlet extends HttpServlet {
     }
 
     private User authenticate(Connection conn, String username, String password) throws SQLException {
-        String sql = "SELECT id, username, email, role FROM users WHERE username = ? AND password = ?";
+        String sql = "SELECT id, username, email, role, nom FROM utilisateur WHERE username = ? AND password = ?";
         try (PreparedStatement stmt = conn.prepareStatement(sql)) {
             stmt.setString(1, username);
             stmt.setString(2, password);
             try (ResultSet rs = stmt.executeQuery()) {
                 if (rs.next()) {
                     User user = new User();
-                    user.setId(rs.getInt("id"));
+                    user.setId(rs.getString("id"));
                     user.setUsername(rs.getString("username"));
                     user.setEmail(rs.getString("email"));
                     user.setRole(rs.getString("role"));
+                    user.setNom(rs.getString("nom"));
                     return user;
                 }
             }

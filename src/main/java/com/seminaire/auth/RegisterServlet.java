@@ -10,6 +10,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.UUID;
 
 @WebServlet("/register")
 public class RegisterServlet extends HttpServlet {
@@ -21,6 +22,7 @@ public class RegisterServlet extends HttpServlet {
         String email = request.getParameter("email");
         String password = request.getParameter("password");
         String confirmPassword = request.getParameter("confirmPassword");
+        String nom = request.getParameter("nom");
 
         if (username == null || email == null || password == null || confirmPassword == null || username.isEmpty() || email.isEmpty() || password.isEmpty()) {
             response.sendRedirect("register.html?error=Tous les champs sont obligatoires");
@@ -32,7 +34,12 @@ public class RegisterServlet extends HttpServlet {
             return;
         }
 
+        if (nom == null || nom.isEmpty()) {
+            nom = username;
+        }
+
         String hashedPassword = PasswordUtils.hashPassword(password);
+        String id = UUID.randomUUID().toString();
 
         try (Connection conn = DBConnection.getConnection()) {
             if (userExists(conn, username, email)) {
@@ -40,12 +47,20 @@ public class RegisterServlet extends HttpServlet {
                 return;
             }
 
-            String sql = "INSERT INTO users (username, email, password, role) VALUES (?, ?, ?, ?)";
+            String sql = "INSERT INTO utilisateur (id, username, email, password, role, nom) VALUES (?, ?, ?, ?, ?, ?)";
             try (PreparedStatement stmt = conn.prepareStatement(sql)) {
-                stmt.setString(1, username);
-                stmt.setString(2, email);
-                stmt.setString(3, hashedPassword);
-                stmt.setString(4, "user");
+                stmt.setString(1, id);
+                stmt.setString(2, username);
+                stmt.setString(3, email);
+                stmt.setString(4, hashedPassword);
+                stmt.setString(5, "CITIZEN");
+                stmt.setString(6, nom);
+                stmt.executeUpdate();
+            }
+
+            String citoyenSql = "INSERT INTO citoyen (utilisateur_id, adresse, telephone) VALUES (?, NULL, NULL)";
+            try (PreparedStatement stmt = conn.prepareStatement(citoyenSql)) {
+                stmt.setString(1, id);
                 stmt.executeUpdate();
             }
 
@@ -56,7 +71,7 @@ public class RegisterServlet extends HttpServlet {
     }
 
     private boolean userExists(Connection conn, String username, String email) throws SQLException {
-        String sql = "SELECT id FROM users WHERE username = ? OR email = ?";
+        String sql = "SELECT id FROM utilisateur WHERE username = ? OR email = ?";
         try (PreparedStatement stmt = conn.prepareStatement(sql)) {
             stmt.setString(1, username);
             stmt.setString(2, email);

@@ -1,0 +1,18 @@
+# Maven build output
+/target/
+
+# Local Maven distribution
+/apache-maven-3.9.5-bin.zip
+/maven/
+
+# React build output and dependencies
+/frontend/node_modules/
+/frontend/dist/
+/frontend/.vite/
+/frontend/.idea/
+
+# OS and editor files
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/

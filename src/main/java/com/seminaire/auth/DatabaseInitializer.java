@@ -35,7 +35,7 @@ public class DatabaseInitializer implements ServletContextListener {
         return "CREATE TABLE IF NOT EXISTS utilisateur ("
                 + "id CHAR(36) NOT NULL PRIMARY KEY,"
                 + "username VARCHAR(150) NOT NULL UNIQUE,"
-                + "email VARCHAR(255) NOT NULL UNIQUE,"
+                + "email VARCHAR(191) NOT NULL UNIQUE,"
                 + "password VARCHAR(255) NOT NULL,"
                 + "role ENUM('CITIZEN','AGENT','ADMIN','USER') NOT NULL DEFAULT 'USER',"
                 + "nom VARCHAR(255) DEFAULT NULL,"
